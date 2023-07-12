@@ -78,7 +78,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="diary," />
 
 
 
@@ -94,17 +94,20 @@
 
 
 
-<meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta name="description" content="Q1.  被告知，ChatGPT机器人回复Error，但是key池已经有了200key在轮训，昨日猜想是key太少了导致的轮训失败，昨日已经重新上线了，昨日断定不成立。 A1:  先问了一个简单问题，机器人回答很快， 再问了一个复杂问题，复现Error，  应该是超时时间设置的较短，机器人设置的不是流式回答，ChatGPT官方回复的太慢了，导致超时了，调试，调试，确实如此，okhttp的读取流的超">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://example.com/2023/07/10/hello-world/index.html">
+<meta property="og:title" content="Hard Work">
+<meta property="og:url" content="http://example.com/2023/07/12/Hard-Work/index.html">
 <meta property="og:site_name" content="Justin&#39;s Blog">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:description" content="Q1.  被告知，ChatGPT机器人回复Error，但是key池已经有了200key在轮训，昨日猜想是key太少了导致的轮训失败，昨日已经重新上线了，昨日断定不成立。 A1:  先问了一个简单问题，机器人回答很快， 再问了一个复杂问题，复现Error，  应该是超时时间设置的较短，机器人设置的不是流式回答，ChatGPT官方回复的太慢了，导致超时了，调试，调试，确实如此，okhttp的读取流的超">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2023-07-10T03:06:19.035Z">
-<meta property="article:modified_time" content="2023-07-10T03:06:19.035Z">
+<meta property="og:image" content="http://example.com/images/pasted-0.png">
+<meta property="article:published_time" content="2023-07-12T12:00:00.000Z">
+<meta property="article:modified_time" content="2023-07-12T12:19:13.235Z">
 <meta property="article:author" content="Justin Min">
+<meta property="article:tag" content="diary">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/images/pasted-0.png">
 
 
 
@@ -133,13 +136,13 @@
 
 
 
-  <link rel="canonical" href="http://example.com/2023/07/10/hello-world/"/>
+  <link rel="canonical" href="http://example.com/2023/07/12/Hard-Work/"/>
 
 
 
 
 
-  <title>Hello World | Justin's Blog</title>
+  <title>Hard Work | Justin's Blog</title>
   
 
 
@@ -262,7 +265,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/07/10/hello-world/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/07/12/Hard-Work/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Justin Min">
@@ -279,7 +282,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Hello World</h1>
+          <h1 class="post-title" itemprop="name headline">Hard Work</h1>
         
 
         <div class="post-meta">
@@ -291,8 +294,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2023-07-10T11:06:19+08:00">
-                2023-07-10
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2023-07-12T20:00:00+08:00">
+                2023-07-12
               </time>
             
 
@@ -329,19 +332,14 @@
       
 
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+        <h3 id="Q1-被告知，ChatGPT机器人回复Error，但是key池已经有了200key在轮训，昨日猜想是key太少了导致的轮训失败，昨日已经重新上线了，昨日断定不成立。"><a href="#Q1-被告知，ChatGPT机器人回复Error，但是key池已经有了200key在轮训，昨日猜想是key太少了导致的轮训失败，昨日已经重新上线了，昨日断定不成立。" class="headerlink" title="Q1.  被告知，ChatGPT机器人回复Error，但是key池已经有了200key在轮训，昨日猜想是key太少了导致的轮训失败，昨日已经重新上线了，昨日断定不成立。"></a>Q1.  被告知，ChatGPT机器人回复Error，但是key池已经有了200key在轮训，昨日猜想是key太少了导致的轮训失败，昨日已经重新上线了，昨日断定不成立。</h3><blockquote>
+<p>A1:  先问了一个简单问题，机器人回答很快， 再问了一个复杂问题，复现Error，</p>
+</blockquote>
+<p>应该是超时时间设置的较短，机器人设置的不是流式回答，ChatGPT官方回复的太慢了，导致超时了，调试，调试，确实如此，okhttp的读取流的超时时间设置为了30s，但是进行问题复问花了2分钟才回复。确定是超时问题。修改okhttp的读取超时时间。问题解决</p>
+<p><img src="/images/pasted-0.png" alt="upload successful"></p>
+<h3 id="Q2-今天VPN挂掉了，惊慌，ChatGPT没了，我-x3D-废物。"><a href="#Q2-今天VPN挂掉了，惊慌，ChatGPT没了，我-x3D-废物。" class="headerlink" title="Q2. 今天VPN挂掉了，惊慌，ChatGPT没了，我&#x3D;废物。"></a>Q2. 今天VPN挂掉了，惊慌，ChatGPT没了，我&#x3D;废物。</h3><p>A2: wtf, 用了3个月都没问题， 咋突然挂了，重启x-ui没用！！！ vpn服务器可以被ping通，但是无法使用，还是重新部署x-ui吧，换了个Vless协议，失败☹️，再次尝试，查看主板日志。好吧原来是ssl证书找不到，奇怪，我没有动过啊。再次部署，成功。 </p>
+<p>Q1+Q2搞了一下午😣。</p>
+<h3 id="Q3-prompts管理查询后段没有写"><a href="#Q3-prompts管理查询后段没有写" class="headerlink" title="Q3.  prompts管理查询后段没有写."></a>Q3.  prompts管理查询后段没有写.</h3><p>WTF， 先撸一把原神吧！！！</p>
 
       
     </div>
@@ -357,6 +355,12 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/diary/" rel="tag"># diary</a>
+          
+        </div>
+      
 
       
       
@@ -366,15 +370,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2023/07/10/hello-world/" rel="next" title="Hello World">
+                <i class="fa fa-chevron-left"></i> Hello World
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2023/07/12/Hard-Work/" rel="prev" title="Hard Work">
-                Hard Work <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -499,7 +503,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick-Start"><span class="nav-number">1.</span> <span class="nav-text">Quick Start</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-a-new-post"><span class="nav-number">1.1.</span> <span class="nav-text">Create a new post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Run-server"><span class="nav-number">1.2.</span> <span class="nav-text">Run server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Generate-static-files"><span class="nav-number">1.3.</span> <span class="nav-text">Generate static files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deploy-to-remote-sites"><span class="nav-number">1.4.</span> <span class="nav-text">Deploy to remote sites</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Q1-被告知，ChatGPT机器人回复Error，但是key池已经有了200key在轮训，昨日猜想是key太少了导致的轮训失败，昨日已经重新上线了，昨日断定不成立。"><span class="nav-number">1.</span> <span class="nav-text">Q1.  被告知，ChatGPT机器人回复Error，但是key池已经有了200key在轮训，昨日猜想是key太少了导致的轮训失败，昨日已经重新上线了，昨日断定不成立。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Q2-今天VPN挂掉了，惊慌，ChatGPT没了，我-x3D-废物。"><span class="nav-number">2.</span> <span class="nav-text">Q2. 今天VPN挂掉了，惊慌，ChatGPT没了，我&#x3D;废物。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Q3-prompts管理查询后段没有写"><span class="nav-number">3.</span> <span class="nav-text">Q3.  prompts管理查询后段没有写.</span></a></li></ol></div>
             
 
           </div>

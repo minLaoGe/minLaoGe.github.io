@@ -260,6 +260,133 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/07/12/Hard-Work/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Justin Min">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Justin's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2023/07/12/Hard-Work/" itemprop="url">Hard Work</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2023-07-12T20:00:00+08:00">
+                2023-07-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="Q1-被告知，ChatGPT机器人回复Error，但是key池已经有了200key在轮训，昨日猜想是key太少了导致的轮训失败，昨日已经重新上线了，昨日断定不成立。"><a href="#Q1-被告知，ChatGPT机器人回复Error，但是key池已经有了200key在轮训，昨日猜想是key太少了导致的轮训失败，昨日已经重新上线了，昨日断定不成立。" class="headerlink" title="Q1.  被告知，ChatGPT机器人回复Error，但是key池已经有了200key在轮训，昨日猜想是key太少了导致的轮训失败，昨日已经重新上线了，昨日断定不成立。"></a>Q1.  被告知，ChatGPT机器人回复Error，但是key池已经有了200key在轮训，昨日猜想是key太少了导致的轮训失败，昨日已经重新上线了，昨日断定不成立。</h3><blockquote>
+<p>A1:  先问了一个简单问题，机器人回答很快， 再问了一个复杂问题，复现Error，</p>
+</blockquote>
+<p>应该是超时时间设置的较短，机器人设置的不是流式回答，ChatGPT官方回复的太慢了，导致超时了，调试，调试，确实如此，okhttp的读取流的超时时间设置为了30s，但是进行问题复问花了2分钟才回复。确定是超时问题。修改okhttp的读取超时时间。问题解决</p>
+<p><img src="/images/pasted-0.png" alt="upload successful"></p>
+<h3 id="Q2-今天VPN挂掉了，惊慌，ChatGPT没了，我-x3D-废物。"><a href="#Q2-今天VPN挂掉了，惊慌，ChatGPT没了，我-x3D-废物。" class="headerlink" title="Q2. 今天VPN挂掉了，惊慌，ChatGPT没了，我&#x3D;废物。"></a>Q2. 今天VPN挂掉了，惊慌，ChatGPT没了，我&#x3D;废物。</h3><p>A2: wtf, 用了3个月都没问题， 咋突然挂了，重启x-ui没用！！！ vpn服务器可以被ping通，但是无法使用，还是重新部署x-ui吧，换了个Vless协议，失败☹️，再次尝试，查看主板日志。好吧原来是ssl证书找不到，奇怪，我没有动过啊。再次部署，成功。 </p>
+<p>Q1+Q2搞了一下午😣。</p>
+<h3 id="Q3-prompts管理查询后段没有写"><a href="#Q3-prompts管理查询后段没有写" class="headerlink" title="Q3.  prompts管理查询后段没有写."></a>Q3.  prompts管理查询后段没有写.</h3><p>WTF， 先撸一把原神吧！！！</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://example.com/2023/07/10/hello-world/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -425,7 +552,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-count">2</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -433,6 +560,15 @@
 
           
 
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-name">tags</span>
+              
+            </div>
           
 
         </nav>
