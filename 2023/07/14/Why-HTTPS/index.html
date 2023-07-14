@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="为什么需要给网站加上HTTPSHTTPS(Hypertext Transfer Protocol Secure ):超文本传输安全协议 给网站加上 HTTPS有以下几个主要的原因：  数据安全：HTTPS 使用 SSL&#x2F;TLS 协议对数据进行加密，可以保护数据在传输过程中的安全，防止数据被窃取或篡改。这对于处理敏感信息（如信用卡信息、用户密码等）的网站来说尤其重要。  身份验证：HTTP">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Why HTTPS">
+<meta property="og:url" content="http://example.com/2023/07/14/Why-HTTPS/index.html">
+<meta property="og:site_name" content="Justin&#39;s Blog">
+<meta property="og:description" content="为什么需要给网站加上HTTPSHTTPS(Hypertext Transfer Protocol Secure ):超文本传输安全协议 给网站加上 HTTPS有以下几个主要的原因：  数据安全：HTTPS 使用 SSL&#x2F;TLS 协议对数据进行加密，可以保护数据在传输过程中的安全，防止数据被窃取或篡改。这对于处理敏感信息（如信用卡信息、用户密码等）的网站来说尤其重要。  身份验证：HTTP">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/images/pasted-16.png">
+<meta property="article:published_time" content="2023-07-14T02:53:39.000Z">
+<meta property="article:modified_time" content="2023-07-14T03:41:36.541Z">
+<meta property="article:author" content="Justin Min">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/images/pasted-16.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://example.com/2023/07/14/Why-HTTPS/"/>
+
+
+
+
+
+  <title>Why HTTPS | Justin's Blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Justin's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/07/14/Why-HTTPS/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Justin Min">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/SAO.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Justin's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Why HTTPS</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2023-07-14T10:53:39+08:00">
+                2023-07-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="为什么需要给网站加上HTTPS"><a href="#为什么需要给网站加上HTTPS" class="headerlink" title="为什么需要给网站加上HTTPS"></a>为什么需要给网站加上HTTPS</h1><p>HTTPS(Hypertext Transfer Protocol Secure ):超文本传输安全协议</p>
+<p>给网站加上 HTTPS有以下几个主要的原因：</p>
+<ol>
+<li><p><strong>数据安全</strong>：HTTPS 使用 SSL&#x2F;TLS 协议对数据进行加密，可以保护数据在传输过程中的安全，防止数据被窃取或篡改。这对于处理敏感信息（如信用卡信息、用户密码等）的网站来说尤其重要。</p>
+</li>
+<li><p><strong>身份验证</strong>：HTTPS 协议需要网站使用一个经过认证的 SSL 证书。这个证书可以证明网站的身份，防止用户被钓鱼网站欺骗。</p>
+</li>
+<li><p><strong>SEO 优化</strong>：搜索引擎（如 Google）倾向于将使用 HTTPS 的网站排在更高的位置，因此使用 HTTPS 可以提高网站的 SEO 排名。</p>
+</li>
+<li><p><strong>提高用户信任</strong>：现代浏览器会在地址栏显示使用 HTTPS 的网站的安全状态，这可以提高用户对网站的信任度。</p>
+</li>
+<li><p><strong>满足某些功能的要求</strong>：某些 Web 功能（如 HTTP&#x2F;2、Service Workers 等）需要网站使用 HTTPS。</p>
+</li>
+</ol>
+<p>因此，无论是出于安全考虑，还是出于提高用户体验和搜索排名的考虑，给网站加上 HTTPS 都是非常推荐的做法。</p>
+<h2 id="为什么HTTPS会比HTTP要安全"><a href="#为什么HTTPS会比HTTP要安全" class="headerlink" title="为什么HTTPS会比HTTP要安全"></a>为什么HTTPS会比HTTP要安全</h2><h3 id="HTTP不安全的原因："><a href="#HTTP不安全的原因：" class="headerlink" title="HTTP不安全的原因："></a>HTTP不安全的原因：</h3><p>明文传输：HTTP协议中的数据是以明文形式传输的，这意味着如果有人能够截获这些数据（例如，通过网络嗅探或中间人攻击），他们就能直接读取和理解这些数据。这可能包括敏感信息，如密码、信用卡号等。</p>
+<p>无身份验证：HTTP协议不提供服务端或客户端的身份验证。这意味着用户可能会与假冒的服务器进行通信，或者服务器可能会接收到假冒的客户端的数据。</p>
+<p>HTTP（超文本传输协议）和HTTPS（安全超文本传输协议）都是用于传输网页和其他数据的协议。它们的主要区别在于HTTPS使用了SSL&#x2F;TLS协议来提供数据的加密和身份验证，而HTTP没有。</p>
+<p>尤其在<a href="https://zh.wikipedia.org/zh-hans/%E4%B8%AD%E9%97%B4%E4%BA%BA%E6%94%BB%E5%87%BB" target="_blank" rel="noopener">中间人攻击</a>中，HTTP的脆弱性远比HTTPS拉垮。</p>
+<h3 id="为什么HTTPS安全"><a href="#为什么HTTPS安全" class="headerlink" title="为什么HTTPS安全"></a>为什么HTTPS安全</h3><p>为了去了解为什么HTTPS相比HTTP安全，我们先来了解HTTPS的部署过程。</p>
+<h4 id="1-SSL证书的申请"><a href="#1-SSL证书的申请" class="headerlink" title="1. SSL证书的申请"></a>1. SSL证书的申请</h4><p>我们先去找到全球上权威的CA（证书颁发机构），我们拿到我们的域名，去他那里申请一个SSL证书。</p>
+<p>具体步骤如下：</p>
+<p>SSL证书的申请过程需要提供一些关于你和你的网站的信息。具体需要的信息可能会根据证书颁发机构（CA）和证书类型的不同而不同，但通常会包括以下内容：</p>
+<ol>
+<li><p><strong>公钥</strong>：你需要生成一对公钥和私钥，并将公钥提交给CA。私钥需要你自己安全地存储，不能泄露给任何人。</p>
+</li>
+<li><p><strong>域名</strong>：你需要提供你想要为其获取SSL证书的域名。CA会验证你对这个域名的所有权。</p>
+</li>
+<li><p><strong>公司信息</strong>：如果你申请的是组织验证（OV）或扩展验证（EV）证书，你需要提供你的公司的详细信息，包括公司名称、地址、电话等。CA会验证这些信息的准确性。</p>
+</li>
+<li><p><strong>联系信息</strong>：你需要提供一个联系人的信息，包括姓名、电子邮件、电话等。这个联系人应该能够回答CA关于证书申请的问题。</p>
+</li>
+<li><p><strong>证书签名请求（CSR）</strong>：CSR是一个包含了你的公钥和一些标识信息（如域名、组织名称等）的文件，你需要生成一个CSR并提交给CA。</p>
+</li>
+</ol>
+<p>以上是申请SSL证书通常需要的信息。在你提交这些信息后，CA会进行验证。如果验证成功，CA会签发一个SSL证书给你。这个证书包含了你的公钥和一些标识信息，以及CA的数字签名。你可以将这个证书安装到你的服务器上，以启用HTTPS。</p>
+<h4 id="2-将SSL证书部署到服务器上"><a href="#2-将SSL证书部署到服务器上" class="headerlink" title="2. 将SSL证书部署到服务器上"></a>2. 将SSL证书部署到服务器上</h4><p>部署成功之后，我们就可以开启HTTPS协议了。 之后每次通信，都建立在HTTPS协议之上。 </p>
+<h4 id="3-安全的传输内容。"><a href="#3-安全的传输内容。" class="headerlink" title="3. 安全的传输内容。"></a>3. 安全的传输内容。</h4><p>需要了解为什么内容安全，我们需要了解下握手的步骤， </p>
+<p><img src="/images/pasted-16.png" alt="upload successful"></p>
+<p>以下是详细步骤：</p>
+<ol>
+<li><p><strong>发起请求</strong>：客户端（例如，浏览器）向服务器发起HTTPS请求。</p>
+</li>
+<li><p><strong>开始握手</strong>：客户端发送一个”Client Hello”消息给服务器，这个消息包含了客户端支持的SSL&#x2F;TLS版本，加密套件列表（包含各种加密算法和哈希函数），以及一个随机生成的客户端随机数。</p>
+</li>
+<li><p><strong>服务器响应</strong>：服务器回复一个”Server Hello”消息，选择一个客户端和服务器都支持的加密套件，以及一个随机生成的服务器随机数。服务器还会发送其SSL证书，该证书包含服务器的公钥。</p>
+</li>
+<li><p><strong>验证证书</strong>：客户端接收到服务器的SSL证书后，会验证证书的有效性。这包括检查证书是否由受信任的证书颁发机构（CA）签发，证书是否在有效期内，以及证书的主题是否匹配服务器的地址。</p>
+</li>
+<li><p><strong>生成预主密钥</strong>：如果证书有效，客户端会生成一个新的随机数，称为“预主密钥”。然后，客户端使用服务器的公钥对预主密钥进行加密，生成一个“Client Key Exchange”消息，并将其发送给服务器。</p>
+</li>
+<li><p><strong>解密预主密钥</strong>：服务器接收到“Client Key Exchange”消息后，使用其私钥解密消息，得到预主密钥。</p>
+</li>
+<li><p><strong>生成会话密钥</strong>：然后，客户端和服务器都使用客户端随机数，服务器随机数，和预主密钥来生成同样的会话密钥。这个会话密钥用于接下来的数据加密和解密。</p>
+</li>
+<li><p><strong>加密通信</strong>：之后的所有通信都使用这个会话密钥进行加密和解密。因为只有客户端和服务器知道会话密钥，所以即使数据在传输过程中被拦截，攻击者也无法解密数据。并且SSL还提供了消息完整性检查的功能。每个消息都会附带一个由消息内容计算出的摘要（通过一个叫做 HMAC 的算法）。接收方可以通过这个摘要检查消息在传输过程中是否被篡改。</p>
+</li>
+</ol>
+<p>这就是HTTPS的加密和解密过程。需要注意的是，这个过程中的关键部分是使用服务器的公钥对预主密钥进行加密，这样只有服务器才能解密并得到预主密钥。这就保证了通信的安全性。</p>
+<h3 id="CA证书的验证"><a href="#CA证书的验证" class="headerlink" title="CA证书的验证"></a>CA证书的验证</h3><p>为什么要讲这个，因为从上图中我们可以看见服务器和客户端只有两个人在进行通信，那么客户端怎么会知道CA证书的合法性呢？这个就是为什么要求CA机构是世界级权威机构了。</p>
+<p>我们来看客户端是如何验证CA证书的合法性：</p>
+<p>在HTTPS握手过程中，客户端如何知道验证服务器的证书颁发机构（CA）是合法的，主要依赖于客户端（通常是浏览器）内置的受信任的根证书列表。</p>
+<p>以下是详细步骤：</p>
+<ol>
+<li><p>当客户端（例如，浏览器）接收到服务器的SSL&#x2F;TLS证书时，证书中会包含签发该证书的证书颁发机构（CA）的信息。</p>
+</li>
+<li><p>客户端会在其内置的受信任的根证书列表中查找这个CA的根证书。这个列表包含了许多公认的、受信任的CA的根证书，例如VeriSign，DigiCert，Let’s Encrypt等。</p>
+</li>
+<li><p>如果客户端在其受信任的根证书列表中找到了对应的CA根证书，那么客户端就会认为这个CA是合法的。然后，客户端会使用这个根证书的公钥来验证服务器证书的数字签名。</p>
+</li>
+<li><p>如果数字签名验证通过，那么客户端就会认为服务器的证书是有效的，然后继续SSL&#x2F;TLS握手过程。如果数字签名验证失败，或者客户端在其受信任的根证书列表中找不到对应的CA根证书，那么客户端就会认为服务器的证书是无效的，然后中断SSL&#x2F;TLS握手过程，并通常会显示一个警告给用户。</p>
+</li>
+</ol>
+<p>需要注意的是，这个过程依赖于客户端的受信任的根证书列表，这个列表是由客户端（通常是浏览器厂商）维护的，并且会随着软件更新而更新。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2023/07/13/SSL%E5%8D%8F%E8%AE%AE%E8%AF%81%E4%B9%A6%E7%94%B3%E8%AF%B7/" rel="next" title="NGINX部署SSL证书">
+                <i class="fa fa-chevron-left"></i> NGINX部署SSL证书
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/SAO.jpg"
+               alt="Justin Min" />
+          <p class="site-author-name" itemprop="name">Justin Min</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">categories</span>
+              
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/minLaoGe/minLaoGe.github.io" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                    
+                      GitHub
+                    
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#为什么需要给网站加上HTTPS"><span class="nav-number">1.</span> <span class="nav-text">为什么需要给网站加上HTTPS</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#为什么HTTPS会比HTTP要安全"><span class="nav-number">1.1.</span> <span class="nav-text">为什么HTTPS会比HTTP要安全</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#HTTP不安全的原因："><span class="nav-number">1.1.1.</span> <span class="nav-text">HTTP不安全的原因：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#为什么HTTPS安全"><span class="nav-number">1.1.2.</span> <span class="nav-text">为什么HTTPS安全</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-SSL证书的申请"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">1. SSL证书的申请</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-将SSL证书部署到服务器上"><span class="nav-number">1.1.2.2.</span> <span class="nav-text">2. 将SSL证书部署到服务器上</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-安全的传输内容。"><span class="nav-number">1.1.2.3.</span> <span class="nav-text">3. 安全的传输内容。</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CA证书的验证"><span class="nav-number">1.1.3.</span> <span class="nav-text">CA证书的验证</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Justin Min</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io" target="_blank" rel="noopener">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next" target="_blank" rel="noopener">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

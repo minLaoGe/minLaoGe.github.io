@@ -78,7 +78,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="diary,NGINX," />
+  <meta name="keywords" content="diary,nginx," />
 
 
 
@@ -94,35 +94,37 @@
 
 
 
-<meta name="description" content="Q1.  被告知，ChatGPT机器人回复Error，但是key池已经有了200key在轮训，昨日猜想是key太少了导致的轮训失败，昨日已经重新上线了，昨日断定不成立。 A1:  先问了一个简单问题，机器人回答很快， 再问了一个复杂问题，复现Error，  先上猜想架构图：   应该是超时时间设置的较短，机器人设置的不是流式回答，ChatGPT官方回复的太慢了，导致超时了，调试，调试，确实如此，o">
+<meta name="description" content="NGINX部署SSL证书首先去申请SSL证书例如免费的网站：  https:&#x2F;&#x2F;freessl.cn&#x2F;    以阿里云为例子：      如果报错如下图请等待几分钟再点击验证：   成功之后，点击下载：    解压下载之后的文件只有两个文件：   还有一个步骤，需要复制证书内容，保存为 public.cert文件，全复制，有空格换行也不用管直接复制保存。  现在我们就有三个文件了，我们只需要上传最">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hard Work">
-<meta property="og:url" content="http://example.com/2023/07/12/Hard-Work/index.html">
+<meta property="og:title" content="NGINX部署SSL证书">
+<meta property="og:url" content="http://example.com/2023/07/13/SSL%E5%8D%8F%E8%AE%AE%E8%AF%81%E4%B9%A6%E7%94%B3%E8%AF%B7/index.html">
 <meta property="og:site_name" content="Justin&#39;s Blog">
-<meta property="og:description" content="Q1.  被告知，ChatGPT机器人回复Error，但是key池已经有了200key在轮训，昨日猜想是key太少了导致的轮训失败，昨日已经重新上线了，昨日断定不成立。 A1:  先问了一个简单问题，机器人回答很快， 再问了一个复杂问题，复现Error，  先上猜想架构图：   应该是超时时间设置的较短，机器人设置的不是流式回答，ChatGPT官方回复的太慢了，导致超时了，调试，调试，确实如此，o">
+<meta property="og:description" content="NGINX部署SSL证书首先去申请SSL证书例如免费的网站：  https:&#x2F;&#x2F;freessl.cn&#x2F;    以阿里云为例子：      如果报错如下图请等待几分钟再点击验证：   成功之后，点击下载：    解压下载之后的文件只有两个文件：   还有一个步骤，需要复制证书内容，保存为 public.cert文件，全复制，有空格换行也不用管直接复制保存。  现在我们就有三个文件了，我们只需要上传最">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://example.com/images/pasted-2.png">
-<meta property="og:image" content="http://example.com/images/pasted-0.png">
-<meta property="og:image" content="http://example.com/images/pasted-1.png">
-<meta property="og:image" content="http://example.com/images/pasted-3.png">
-<meta property="og:image" content="http://example.com/images/pasted-4.png">
-<meta property="og:image" content="http://example.com/images/pasted-5.png">
-<meta property="og:image" content="http://example.com/images/pasted-7.png">
-<meta property="og:image" content="http://example.com/images/pasted-6.png">
-<meta property="og:image" content="http://example.com/images/pasted-9.png">
-<meta property="og:image" content="http://example.com/images/pasted-8.png">
-<meta property="og:image" content="http://example.com/images/pasted-10.png">
-<meta property="og:image" content="http://example.com/images/pasted-11.png">
-<meta property="og:image" content="http://example.com/images/pasted-13.png">
-<meta property="og:image" content="http://example.com/images/pasted-12.png">
-<meta property="og:image" content="http://example.com/images/pasted-14.png">
-<meta property="article:published_time" content="2023-07-12T12:00:00.000Z">
-<meta property="article:modified_time" content="2023-07-12T16:40:27.576Z">
+<meta property="og:image" content="http://example.com/images/pasted-18.png">
+<meta property="og:image" content="http://example.com/images/pasted-19.png">
+<meta property="og:image" content="http://example.com/images/pasted-20.png">
+<meta property="og:image" content="http://example.com/images/pasted-21.png">
+<meta property="og:image" content="http://example.com/images/pasted-22.png">
+<meta property="og:image" content="http://example.com/images/pasted-23.png">
+<meta property="og:image" content="http://example.com/images/pasted-24.png">
+<meta property="og:image" content="http://example.com/images/pasted-25.png">
+<meta property="og:image" content="http://example.com/images/pasted-26.png">
+<meta property="og:image" content="http://example.com/images/pasted-27.png">
+<meta property="og:image" content="http://example.com/images/pasted-29.png">
+<meta property="og:image" content="http://example.com/images/pasted-30.png">
+<meta property="og:image" content="http://example.com/images/pasted-28.png">
+<meta property="og:image" content="http://example.com/images/pasted-31.png">
+<meta property="og:image" content="http://example.com/images/pasted-32.png">
+<meta property="og:image" content="http://example.com/images/pasted-33.png">
+<meta property="og:image" content="http://example.com/images/pasted-34.png">
+<meta property="article:published_time" content="2023-07-13T15:23:00.000Z">
+<meta property="article:modified_time" content="2023-07-14T04:22:00.914Z">
 <meta property="article:author" content="Justin Min">
 <meta property="article:tag" content="diary">
-<meta property="article:tag" content="NGINX">
+<meta property="article:tag" content="nginx">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/images/pasted-2.png">
+<meta name="twitter:image" content="http://example.com/images/pasted-18.png">
 
 
 
@@ -151,13 +153,13 @@
 
 
 
-  <link rel="canonical" href="http://example.com/2023/07/12/Hard-Work/"/>
+  <link rel="canonical" href="http://example.com/2023/07/13/SSL协议证书申请/"/>
 
 
 
 
 
-  <title>Hard Work | Justin's Blog</title>
+  <title>NGINX部署SSL证书 | Justin's Blog</title>
   
 
 
@@ -280,7 +282,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/07/12/Hard-Work/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/07/13/SSL%E5%8D%8F%E8%AE%AE%E8%AF%81%E4%B9%A6%E7%94%B3%E8%AF%B7/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Justin Min">
@@ -297,7 +299,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Hard Work</h1>
+          <h1 class="post-title" itemprop="name headline">NGINX部署SSL证书</h1>
         
 
         <div class="post-meta">
@@ -309,8 +311,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2023-07-12T20:00:00+08:00">
-                2023-07-12
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2023-07-13T23:23:00+08:00">
+                2023-07-13
               </time>
             
 
@@ -332,8 +334,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%88%91%E7%9A%84%E6%8A%80%E6%9C%AF%E6%97%A5%E5%BF%97/" itemprop="url" rel="index">
-                    <span itemprop="name">我的技术日志</span>
+                  <a href="/categories/diary/" itemprop="url" rel="index">
+                    <span itemprop="name">diary</span>
                   </a>
                 </span>
 
@@ -369,41 +371,37 @@
       
 
       
-        <h3 id="Q1-被告知，ChatGPT机器人回复Error，但是key池已经有了200key在轮训，昨日猜想是key太少了导致的轮训失败，昨日已经重新上线了，昨日断定不成立。"><a href="#Q1-被告知，ChatGPT机器人回复Error，但是key池已经有了200key在轮训，昨日猜想是key太少了导致的轮训失败，昨日已经重新上线了，昨日断定不成立。" class="headerlink" title="Q1.  被告知，ChatGPT机器人回复Error，但是key池已经有了200key在轮训，昨日猜想是key太少了导致的轮训失败，昨日已经重新上线了，昨日断定不成立。"></a>Q1.  被告知，ChatGPT机器人回复Error，但是key池已经有了200key在轮训，昨日猜想是key太少了导致的轮训失败，昨日已经重新上线了，昨日断定不成立。</h3><blockquote>
-<p>A1:  先问了一个简单问题，机器人回答很快， 再问了一个复杂问题，复现Error，</p>
-</blockquote>
-<p>先上猜想架构图： </p>
-<p><img src="/images/pasted-2.png" alt="upload successful"></p>
-<p>应该是超时时间设置的较短，机器人设置的不是流式回答，ChatGPT官方回复的太慢了，导致超时了，调试，调试，确实如此，okhttp的读取流的超时时间设置为了30s，但是进行问题复问花了2分钟才回复。确定是超时问题。修改okhttp的读取超时时间。问题解决</p>
-<p><img src="/images/pasted-0.png" alt="upload successful"></p>
-<h3 id="Q2-今天VPN挂掉了，惊慌，ChatGPT没了，我-x3D-废物。"><a href="#Q2-今天VPN挂掉了，惊慌，ChatGPT没了，我-x3D-废物。" class="headerlink" title="Q2. 今天VPN挂掉了，惊慌，ChatGPT没了，我&#x3D;废物。"></a>Q2. 今天VPN挂掉了，惊慌，ChatGPT没了，我&#x3D;废物。</h3><p>A2: wtf, 用了3个月都没问题， 咋突然挂了，重启x-ui没用！！！ vpn服务器可以被ping通，但是无法使用，还是重新部署x-ui吧，换了个Vless协议，失败☹️，再次尝试，查看主板日志。好吧原来是ssl证书找不到，奇怪，我没有动过啊。再次部署，成功。 </p>
-<p>Q1+Q2搞了一下午😣。</p>
-<h3 id="Q3-prompts管理查询后段没有写"><a href="#Q3-prompts管理查询后段没有写" class="headerlink" title="Q3.  prompts管理查询后段没有写."></a>Q3.  prompts管理查询后段没有写.</h3><p>WTF， 先撸一把原神吧！！！</p>
-<h3 id="Q4-Emergency-机器人报错—-无解的超时"><a href="#Q4-Emergency-机器人报错—-无解的超时" class="headerlink" title="Q4. Emergency 机器人报错—-无解的超时"></a>Q4. Emergency 机器人报错—-无解的超时</h3><p>？？？这个问题难道不是和第一个问题重复了吗？其实并没有。 两个是不同的问题，晚上上线的时候发现的，众所周知，每个python后段代码部署都有个环境变量文件 .env，由于.env有标志机器人的唯一性的字段，所以，各个机器人部署的时候.env 中有的环境需要单独进行部署。</p>
-<p>起因：  在Q1中，就已经解决了，超时报错，但是在部署上服务器的时候，机器人再次超时报错，怀疑人生中…….</p>
-<p><img src="/images/pasted-1.png" alt="upload successful"></p>
-<p>处理经过:  我们已经在Q1中解决了超时的问题，为啥还会有问题呢，从架构图中不难看出，我首先想到的是： python代码到java代理的请求超时了。之前上线的时候没有处理这个问题是因为已经百度过了，连接时间只要低于21s，python代码的超时时间就由服务器来决定了，永远就不会超时了。我怀疑起了之前这句话的真确性。于是乎，timeout给上再次上线： </p>
-<p><img src="/images/pasted-3.png" alt="upload successful"></p>
-<p>还是Error，看服务端，在没有超过超时时间120s的时候，python代码就已经获取了Error，问题是服务端并没有返回结果？他是怎么自己中断的，我python代码的超时时间明明设置了600s啊。 失败，再次添加日志。再次上线，修改如下：</p>
-<p><img src="/images/pasted-4.png" alt="upload successful"></p>
-<p><img src="/images/pasted-5.png" alt="upload successful"></p>
-<p>发现所有就算设置了600s的超时时间python代码还是在60s的时候自动断开连接。多次请求报错error</p>
-<p><img src="/images/pasted-7.png" alt="upload successful"></p>
-<p><img src="/images/pasted-6.png" alt="upload successful"></p>
-<p>怀疑人生了。 问chatGPT：</p>
-<p><img src="/images/pasted-9.png" alt="upload successful"></p>
-<p><img src="/images/pasted-8.png" alt="upload successful"></p>
-<p><img src="/images/pasted-10.png" alt="upload successful"></p>
-<p>看不懂，难道是路由器设置的超时时间？？？阿里云这么坑爹吗？好吧没辙了。问大佬超时时间总是卡死在60s什么原因？：</p>
-<p><img src="/images/pasted-11.png" alt="upload successful"></p>
-<p>恍然大悟！！</p>
-<p>修改前：</p>
-<p><img src="/images/pasted-13.png" alt="upload successful"></p>
-<p>修改后：</p>
-<p><img src="/images/pasted-12.png" alt="upload successful"></p>
-<p>解决。 完美收官！！修改最后的架构图</p>
-<p><img src="/images/pasted-14.png" alt="upload successful"></p>
-<p>总结，好吧，其实一开始gpt就给出答案了，服务端限制了超时，但问题是我上午已经解决了服务端的问题啊，完全没有想到nginx的问题，可以看出来太粗心了🥹。 </p>
+        <h1 id="NGINX部署SSL证书"><a href="#NGINX部署SSL证书" class="headerlink" title="NGINX部署SSL证书"></a>NGINX部署SSL证书</h1><h2 id="首先去申请SSL证书"><a href="#首先去申请SSL证书" class="headerlink" title="首先去申请SSL证书"></a>首先去申请SSL证书</h2><p>例如<a href="https://freessl.cn/" target="_blank" rel="noopener">免费的网站</a>： </p>
+<p><a href="https://freessl.cn/" target="_blank" rel="noopener">https://freessl.cn/</a></p>
+<p><img src="/images/pasted-18.png" alt="upload successful"></p>
+<p><img src="/images/pasted-19.png" alt="upload successful"></p>
+<p><img src="/images/pasted-20.png" alt="upload successful"></p>
+<p>以阿里云为例子：</p>
+<p><img src="/images/pasted-21.png" alt="upload successful"></p>
+<p><img src="/images/pasted-22.png" alt="upload successful"></p>
+<p><img src="/images/pasted-23.png" alt="upload successful"></p>
+<p><img src="/images/pasted-24.png" alt="upload successful"></p>
+<p><img src="/images/pasted-25.png" alt="upload successful"></p>
+<p>如果报错如下图请等待几分钟再点击验证： </p>
+<p><img src="/images/pasted-26.png" alt="upload successful"></p>
+<p>成功之后，点击下载： </p>
+<p><img src="/images/pasted-27.png" alt="upload successful"></p>
+<p><img src="/images/pasted-29.png" alt="upload successful"></p>
+<p>解压下载之后的文件只有两个文件： </p>
+<p><img src="/images/pasted-30.png" alt="upload successful"></p>
+<p>还有一个步骤，需要复制证书内容，保存为 public.cert文件，全复制，有空格换行也不用管直接复制保存。</p>
+<p><img src="/images/pasted-28.png" alt="upload successful"></p>
+<p>现在我们就有三个文件了，我们只需要上传最后两个到服务器： </p>
+<p><img src="/images/pasted-31.png" alt="upload successful"></p>
+<p><img src="/images/pasted-32.png" alt="upload successful"></p>
+<p>按照图片配置nginx 配置证书路径： </p>
+<p><img src="/images/pasted-33.png" alt="upload successful"></p>
+<p>具体配置如下： </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen 80;</span><br><span class="line">    server_name 127.0.0.1 baidu.cn;# 换成你的域名</span><br><span class="line">    return 308 https:&#x2F;&#x2F;$host$request_uri;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">   access_log  &#x2F;www&#x2F;wwwlogs&#x2F;80_access.log;</span><br><span class="line">   error_log &#x2F;www&#x2F;wwwlogs&#x2F;80_error.log;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">server &#123;</span><br><span class="line">    listen 443 ssl;</span><br><span class="line"></span><br><span class="line">    server_name 127.0.0.1 baidu.cn; # 换成你的域名</span><br><span class="line"></span><br><span class="line">    ssl_certificate &#x2F;root&#x2F;sslcert&#x2F;public.cert; # 这里路径替换为你的证书文件路径</span><br><span class="line">    ssl_certificate_key &#x2F;root&#x2F;sslcert&#x2F;private.key; # 这里路径替换为你的私钥文件路径</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">     location &#x2F; &#123;</span><br><span class="line">             proxy_pass http:&#x2F;&#x2F;127.0.0.1:3000; #指定服务器的IP地址或域名:端口号;</span><br><span class="line">        proxy_set_header Host $host;</span><br><span class="line">        proxy_set_header X-Real-IP $remote_addr;</span><br><span class="line">        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;</span><br><span class="line">          proxy_cache off;</span><br><span class="line">        proxy_cache_bypass $http_cache_control;</span><br><span class="line">        proxy_no_cache $http_cache_control;</span><br><span class="line">     &#125;</span><br><span class="line"></span><br><span class="line">      location &#x2F;gateway &#123;</span><br><span class="line">        proxy_pass http:&#x2F;&#x2F;124.222.211.193:8087&#x2F;gateway; #指定服务器的IP地址或域名:端口号;</span><br><span class="line">        proxy_set_header Host $host;</span><br><span class="line">        proxy_set_header X-Real-IP $remote_addr;</span><br><span class="line">        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;</span><br><span class="line">        # 添加其他需要转发的请求头</span><br><span class="line">    &#125;</span><br><span class="line">     access_log  &#x2F;www&#x2F;wwwlogs&#x2F;443_access.log;</span><br><span class="line">   error_log &#x2F;www&#x2F;wwwlogs&#x2F;443_error.log;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>接下来再重启nginx或者重载nginx配置。</p>
+<p>再次访问我们的网站,发现ok了： </p>
+<p><img src="/images/pasted-34.png" alt="upload successful"></p>
 
       
     </div>
@@ -423,7 +421,7 @@
           
             <a href="/tags/diary/" rel="tag"># diary</a>
           
-            <a href="/tags/NGINX/" rel="tag"># NGINX</a>
+            <a href="/tags/nginx/" rel="tag"># nginx</a>
           
         </div>
       
@@ -436,8 +434,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2023/07/10/hello-world/" rel="next" title="Hello World">
-                <i class="fa fa-chevron-left"></i> Hello World
+              <a href="/2023/07/12/Hard-Work/" rel="next" title="Hard Work">
+                <i class="fa fa-chevron-left"></i> Hard Work
               </a>
             
           </div>
@@ -446,8 +444,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2023/07/13/SSL%E5%8D%8F%E8%AE%AE%E8%AF%81%E4%B9%A6%E7%94%B3%E8%AF%B7/" rel="prev" title="NGINX部署SSL证书">
-                NGINX部署SSL证书 <i class="fa fa-chevron-right"></i>
+              <a href="/2023/07/14/Why-HTTPS/" rel="prev" title="Why HTTPS">
+                Why HTTPS <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -595,7 +593,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Q1-被告知，ChatGPT机器人回复Error，但是key池已经有了200key在轮训，昨日猜想是key太少了导致的轮训失败，昨日已经重新上线了，昨日断定不成立。"><span class="nav-number">1.</span> <span class="nav-text">Q1.  被告知，ChatGPT机器人回复Error，但是key池已经有了200key在轮训，昨日猜想是key太少了导致的轮训失败，昨日已经重新上线了，昨日断定不成立。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Q2-今天VPN挂掉了，惊慌，ChatGPT没了，我-x3D-废物。"><span class="nav-number">2.</span> <span class="nav-text">Q2. 今天VPN挂掉了，惊慌，ChatGPT没了，我&#x3D;废物。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Q3-prompts管理查询后段没有写"><span class="nav-number">3.</span> <span class="nav-text">Q3.  prompts管理查询后段没有写.</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Q4-Emergency-机器人报错—-无解的超时"><span class="nav-number">4.</span> <span class="nav-text">Q4. Emergency 机器人报错—-无解的超时</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#NGINX部署SSL证书"><span class="nav-number">1.</span> <span class="nav-text">NGINX部署SSL证书</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#首先去申请SSL证书"><span class="nav-number">1.1.</span> <span class="nav-text">首先去申请SSL证书</span></a></li></ol></li></ol></div>
             
 
           </div>
