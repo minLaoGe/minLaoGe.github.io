@@ -260,6 +260,442 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/07/17/fail2ban/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Justin Min">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/SAO.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Justin's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2023/07/17/fail2ban/" itemprop="url">fail2ban</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2023-07-17T22:21:00+08:00">
+                2023-07-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/fail2ban/" itemprop="url" rel="index">
+                    <span itemprop="name">fail2ban</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/fail2ban/%E5%AE%89%E5%85%A8/" itemprop="url" rel="index">
+                    <span itemprop="name">安全</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="fail2ban"><a href="#fail2ban" class="headerlink" title="fail2ban"></a>fail2ban</h1><p><img src="/images/pasted-41.png" alt="upload successful"></p>
+<p>Fail2ban 是一款开源的、用于防止网络服务被暴力破解的软件。它可以监控系统日志文件，并寻找有恶意行为的迹象，比如太多的密码失败尝试、寻找系统漏洞等。一旦检测到这样的行为，Fail2ban 就会自动更新防火墙规则以阻止恶意 IP 地址的进一步访问，从而增加了服务器的安全性。</p>
+<p>Fail2ban 的主要特性包括：</p>
+<ol>
+<li><p>客户端&#x2F;服务器架构：Fail2ban 有一个服务器和多个客户端。服务器负责监控日志文件和执行动作，客户端则负责向服务器发送命令。</p>
+</li>
+<li><p>多日志文件支持：Fail2ban 可以同时监控多个日志文件。</p>
+</li>
+<li><p>可配置的检测和封禁策略：Fail2ban 允许用户自定义规则，以匹配日志文件中的特定模式，并定义在检测到这些模式后应该执行的动作。</p>
+</li>
+<li><p>支持多种防火墙：Fail2ban 支持多种防火墙，包括 iptables、ipfw、pf 等。</p>
+</li>
+<li><p>邮件通知：Fail2ban 可以配置为在封禁 IP 或解封 IP 时发送邮件通知。</p>
+</li>
+<li><p>可扩展性：Fail2ban 允许用户编写自己的过滤器和动作，从而可以适应各种特定的需求。</p>
+</li>
+</ol>
+<p>Fail2ban 是一种有效的防止暴力破解的工具，它可以保护 SSH、FTP、SMTP、Apache 等多种服务。通过自动封禁恶意 IP，Fail2ban 可以显著提高服务器的安全性。</p>
+<h2 id="fail2ban的部署"><a href="#fail2ban的部署" class="headerlink" title="fail2ban的部署"></a>fail2ban的部署</h2><p>摘抄自 <a href="https://8g.gg/53_238.html" target="_blank" rel="noopener">其他博文</a></p>
+<p>首先检查Firewalld是否启用</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">如果您已经安装iptables建议先关闭</span></span><br><span class="line">service iptables stop</span><br><span class="line"><span class="meta">#</span><span class="bash">查看Firewalld状态</span></span><br><span class="line">firewall-cmd --state</span><br><span class="line"><span class="meta">#</span><span class="bash">启动firewalld</span></span><br><span class="line">systemctl start firewalld</span><br><span class="line"><span class="meta">#</span><span class="bash">设置开机启动</span></span><br><span class="line">systemctl enable firewalld.service</span><br><span class="line"><span class="meta">#</span><span class="bash">更新完配置记得重启</span></span><br><span class="line">systemctl restart fail2ban</span><br></pre></td></tr></table></figure>
+
+<p>启用Firewalld后会禁止所有端口连接，因此请务必放行常用的端口，以免被阻挡在外，以下是放行SSH端口（22）示例，供参考：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">放行22端口</span></span><br><span class="line">firewall-cmd --zone=public --add-port=80/tcp --permanent</span><br><span class="line"><span class="meta">#</span><span class="bash">重载配置</span></span><br><span class="line">firewall-cmd --reload</span><br><span class="line"><span class="meta">#</span><span class="bash">查看已放行端口</span></span><br><span class="line">firewall-cmd --zone=public --list-ports</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">CentOS内置源并未包含fail2ban，需要先安装epel源</span></span><br><span class="line">yum -y install epel-release</span><br><span class="line"><span class="meta">#</span><span class="bash">安装fial2ban</span></span><br><span class="line">yum -y install fail2ban</span><br><span class="line">安装成功后fail2ban配置文件位于/etc/fail2ban，其中jail.conf为主配置文件，相关的匹配规则位于filter.d目录，其它目录/文件一般很少用到，如果需要详细了解可自行搜索。</span><br></pre></td></tr></table></figure>
+<p><strong>fail2ban中常用命令</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">启动</span></span><br><span class="line">systemctl start fail2ban</span><br><span class="line"><span class="meta">#</span><span class="bash">停止</span></span><br><span class="line">systemctl stop fail2ban</span><br><span class="line"><span class="meta">#</span><span class="bash">开机启动</span></span><br><span class="line">systemctl enable fail2ban</span><br><span class="line"><span class="meta">#</span><span class="bash">查看被ban IP，其中sshd为名称，比如上面的[wordpress]</span></span><br><span class="line">fail2ban-client status sshd</span><br><span class="line"><span class="meta">#</span><span class="bash">删除被ban IP</span></span><br><span class="line">fail2ban-client set sshd delignoreip 192.168.111.111</span><br><span class="line"><span class="meta">#</span><span class="bash">查看日志</span></span><br><span class="line">tail /var/log/fail2ban.log</span><br><span class="line"><span class="meta">#</span><span class="bash"> 重启fail2ban使配置文件其生效-修改配置文件的时候记得重启</span></span><br><span class="line">systemctl restart fail2ban</span><br></pre></td></tr></table></figure>
+
+
+
+
+<p><strong>配置规则</strong></p>
+<p>新建jail.local来覆盖fail2ban的一些默认规则：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">新建配置</span></span><br><span class="line">vi /etc/fail2ban/jail.local</span><br><span class="line"><span class="meta">#</span><span class="bash">默认配置</span></span><br><span class="line">[DEFAULT]</span><br><span class="line">ignoreip = 127.0.0.1/8</span><br><span class="line">bantime  = 86400</span><br><span class="line">findtime = 600</span><br><span class="line">maxretry = 5</span><br><span class="line"><span class="meta">#</span><span class="bash">这里banaction必须用firewallcmd-ipset,这是fiewalll支持的关键，如果是用Iptables请不要这样填写</span></span><br><span class="line">banaction = firewallcmd-ipset</span><br><span class="line">action = %(action_mwl)s</span><br></pre></td></tr></table></figure>
+
+<p>ignoreip：IP白名单，白名单中的IP不会屏蔽，可填写多个以（,）分隔</p>
+<p>bantime：屏蔽时间，单位为秒（s）</p>
+<p>findtime：时间范围</p>
+<p>maxretry：最大次数</p>
+<p>banaction：屏蔽IP所使用的方法，上面使用firewalld屏蔽端口</p>
+<p>防止SSH爆破</p>
+<p>如果您还在使用默认SSH端口（22），可能每天都会被扫描，强烈建议先参考《Linux服务器之登录安全》加强服务器防护，或者可以使用fail2ban将恶意IP屏蔽。</p>
+<p>继续修改jail.local这个配置文件，在后面追加如下内容：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[sshd]</span><br><span class="line">enabled = true</span><br><span class="line">filter  = sshd</span><br><span class="line">port    = 22</span><br><span class="line">action = %(action_mwl)s</span><br><span class="line">logpath = /var/log/secure</span><br></pre></td></tr></table></figure>
+
+<p>[sshd]：名称，可以随便填写</p>
+<p>filter：规则名称，必须填写位于filter.d目录里面的规则，sshd是fail2ban内置规则</p>
+<p>port：对应的端口</p>
+<p>action：采取的行动</p>
+<p>logpath：需要监视的日志路径</p>
+<p>到这一步，我们jail.local的规则看起来可能像下面这样子：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">[DEFAULT]</span><br><span class="line">ignoreip = 127.0.0.1/8</span><br><span class="line">bantime  = 86400</span><br><span class="line">findtime = 600</span><br><span class="line">maxretry = 5</span><br><span class="line">banaction = firewallcmd-ipset</span><br><span class="line">action = %(action_mwl)s</span><br><span class="line">[sshd]</span><br><span class="line">enabled = true</span><br><span class="line">filter  = sshd</span><br><span class="line">port    = 22</span><br><span class="line">action = %(action_mwl)s</span><br><span class="line">logpath = /var/log/secure</span><br></pre></td></tr></table></figure>
+<p>上面的配置意思是如果同一个IP，在10分钟内，如果连续超过5次错误，则使用Firewalld将他IP ban了。输入systemctl start fail2ban启动fail2ban来试试效果。</p>
+<p>使用另一台服务器不断尝试连接SSH，并且不断的将密码输入错误，你会发现连续超过5次后直接连不上，说明IP被ban了，可以输入：fail2ban-client status sshd查看被ban的IP，如下截图。</p>
+<p><img src="/images/pasted-42.png" alt="upload successful"></p>
+<p><strong>防止CC攻击</strong></p>
+<p>这里仅以Nginx为例，使用fail2ban来监视nginx日志，匹配短时间内频繁请求的IP，并使用firewalld将其IP屏蔽，达到CC防护的作用。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">需要先新建一个nginx日志匹配规则</span></span><br><span class="line">vi /etc/fail2ban/filter.d/nginx-cc.conf</span><br><span class="line"><span class="meta">#</span><span class="bash">填写如下内容</span></span><br><span class="line">[Definition]</span><br><span class="line">failregex = &lt;HOST&gt; -.*- .*HTTP/1.* .* .*$</span><br><span class="line">ignoreregex =</span><br></pre></td></tr></table></figure>
+
+
+<p>继续修改jail.local追加如下内容：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[nginx-cc]</span><br><span class="line">enabled = true</span><br><span class="line">port = http,https</span><br><span class="line">filter = nginx-cc</span><br><span class="line">action = %(action_mwl)s</span><br><span class="line">maxretry = 20</span><br><span class="line">findtime = 60</span><br><span class="line">bantime = 3600</span><br><span class="line">logpath = /usr/local/nginx/logs/access.log  #替换为nginx的日志地址</span><br></pre></td></tr></table></figure>
+
+<p>上面的配置意思是如果在60s内，同一IP达到20次请求，则将其IP ban 1小时，上面只是为了测试，请根据自己的实际情况修改。logpath为nginx日志路径。</p>
+<p><strong>防止Wordpress爆破</strong></p>
+<p>如果您经常分析日志会发现有大量机器人在扫描wordpress登录页面wp-login.php，虽然对方可能没成功，但是为了避免万一还是将他IP干掉为好。</p>
+<p>需要先新建一个nginx日志匹配规则</p>
+<p>vi &#x2F;etc&#x2F;fail2ban&#x2F;filter.d&#x2F;wordpress.conf</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">填写如下内容</span></span><br><span class="line">[Definition]</span><br><span class="line">failregex = ^&lt;HOST&gt; -.* /wp-login.php.* HTTP/1\.."</span><br><span class="line">ignoreregex =</span><br></pre></td></tr></table></figure>
+<p>继续修改jail.local追加如下内容：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[wordpress]</span><br><span class="line">enabled = true</span><br><span class="line">port = http,https</span><br><span class="line">filter = wordpress</span><br><span class="line">action = %(action_mwl)s</span><br><span class="line">maxretry = 20</span><br><span class="line">findtime = 60</span><br><span class="line">bantime = 3600</span><br><span class="line">logpath = /usr/local/nginx/logs/access.log  #替换为nginx日志地址</span><br></pre></td></tr></table></figure>
+
+
+
+<p>当然，别忘记输入systemctl restart fail2ban重启fail2ban使其生效。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/07/17/%E5%AE%89%E5%85%A8%E9%82%A3%E4%BA%9B%E4%BA%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Justin Min">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/SAO.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Justin's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2023/07/17/%E5%AE%89%E5%85%A8%E9%82%A3%E4%BA%9B%E4%BA%8B/" itemprop="url">安全那些事</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2023-07-17T21:48:00+08:00">
+                2023-07-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/diary/" itemprop="url" rel="index">
+                    <span itemprop="name">diary</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/diary/%E5%AE%89%E5%85%A8/" itemprop="url" rel="index">
+                    <span itemprop="name">安全</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Q1-网站无法访问，疑似被爬虫打垮了。"><a href="#Q1-网站无法访问，疑似被爬虫打垮了。" class="headerlink" title="Q1: 网站无法访问，疑似被爬虫打垮了。"></a>Q1: 网站无法访问，疑似被爬虫打垮了。</h2><p><strong>Tips:  轻量级 2核4G 服务器。</strong></p>
+<p>今天本想访问下自己的网站，给他添加些新功能，结果发现，网站无法访问了。</p>
+<p><img src="/images/pasted-35.png" alt="upload successful"></p>
+<p>傻了！！啥问题，服务器崩了？？</p>
+<p>登录服务器，查看pm2 前端日志,没有问题，一切正常，服务也是在运行状态。</p>
+<p><img src="/images/pasted-36.png" alt="upload successful"></p>
+<p>惊了，查看nginx日志,果然发现问题了，居然有请求访问不存在的路径，我顿时就明白了，感情是安全实习生把我的服务器当靶场训练了,并且试图进入我的php数据库管理员和solr后管界面，但是可惜的是我的服务器只是简单的项目，并没有后管也没有使用这么复杂的技术,但是这么些请求就把我网站打垮了，不可思议。</p>
+<p><img src="/images/pasted-37.png" alt="upload successful"></p>
+<p>无论如何，要先控制他们的访问才是王道。这时候，我们就要推出一款比较优秀的防止爆破攻击的工具fail2ban了</p>
+<h2 id="A1-重启前端服务，重启nginx-开启fail2ban"><a href="#A1-重启前端服务，重启nginx-开启fail2ban" class="headerlink" title="A1: 重启前端服务，重启nginx,开启fail2ban"></a>A1: 重启前端服务，重启nginx,开启fail2ban</h2><h2 id="fail2ban"><a href="#fail2ban" class="headerlink" title="fail2ban"></a>fail2ban</h2><p>Fail2ban 是一款开源的、用于防止网络服务被暴力破解的软件。它可以监控系统日志文件，并寻找有恶意行为的迹象，比如太多的密码失败尝试、寻找系统漏洞等。一旦检测到这样的行为，Fail2ban 就会自动更新防火墙规则以阻止恶意 IP 地址的进一步访问，从而增加了服务器的安全性。它可以保护 SSH、FTP、SMTP、Apache 等多种服务。通过自动封禁恶意 IP，Fail2ban 可以显著提高服务器的安全性。</p>
+<h3 id="fail2ban-防止SSH口令爆破攻击"><a href="#fail2ban-防止SSH口令爆破攻击" class="headerlink" title="fail2ban 防止SSH口令爆破攻击"></a>fail2ban 防止SSH口令爆破攻击</h3><p><img src="/images/pasted-38.png" alt="upload successful"></p>
+<p>fail2ban的安装，可以参考我的其他博文。</p>
+<p>这次我们安装好之后，过了一会再查看日志，我们发现不止cc攻击还有，居然还有ssh口令爆破攻击，可以看见fail2ban可以帮我们屏蔽大部分ssh爆破攻击了，不愧是你:</p>
+<p>ssh防止爆破配置</p>
+<blockquote>
+<p>vim &#x2F;etc&#x2F;fail2ban&#x2F;jail.local</p>
+</blockquote>
+<p>添加一下内容</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[sshd]</span><br><span class="line">enabled = true</span><br><span class="line">filter  = sshd</span><br><span class="line">port    = 22</span><br><span class="line">action = %(action_mwl)s  # </span><br><span class="line">logpath = /var/log/secure</span><br></pre></td></tr></table></figure>
+
+<p>重启fail2ban： </p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl restart fail2ban</span><br></pre></td></tr></table></figure>
+
+
+<p>等待一会发现ssh爆破攻击日志</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tail &#x2F;var&#x2F;log&#x2F;fail2ban.log</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/pasted-40.png" alt="upload successful"></p>
+<p>查看ssh禁用ip列表</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fail2ban-client status sshd</span><br></pre></td></tr></table></figure>
+
+
+<p><img src="/images/pasted-39.png" alt="upload successful"></p>
+<h2 id="fail2ban防止cc攻击"><a href="#fail2ban防止cc攻击" class="headerlink" title="fail2ban防止cc攻击"></a>fail2ban防止cc攻击</h2><p>要配置Fail2ban以在60秒内出现10次404或者400的错误时禁止IP，需要在Fail2ban的配置文件中创建一个新的过滤器和一个新的监视动作。以下是一个基本的步骤：</p>
+<ol>
+<li>创建一个新的过滤器。在<code>/etc/fail2ban/filter.d</code>目录下创建一个新的文件，例如<code>nginx-404.conf</code>，并添加以下内容：</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[Definition]</span><br><span class="line">failregex =  ^&lt;HOST&gt; -.*<span class="string">"(GET|POST|HEAD).*"</span> (400|404) .*</span><br><span class="line">ignoreregex =</span><br></pre></td></tr></table></figure>
+
+<p>这个正则表达式将匹配任何返回404或者400的状态码的GET|POST|HEAD请求。</p>
+<ol start="2">
+<li>在<code>/etc/fail2ban/jail.local</code>文件中创建一个新的监视动作。添加以下内容：</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[nginx-404]</span><br><span class="line">enabled  = <span class="literal">true</span></span><br><span class="line">filter   = nginx-404</span><br><span class="line">action   = iptables[name=HTTP, port=http, protocol=tcp]</span><br><span class="line">logpath  = /var/<span class="built_in">log</span>/nginx/*access.log </span><br><span class="line">maxretry = 10</span><br><span class="line">findtime = 60</span><br><span class="line">bantime  = 600</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>logpath  &#x3D; &#x2F;var&#x2F;log&#x2F;nginx&#x2F;*access.log 用于匹配所有的nginx的配置文件。</p>
+</blockquote>
+<p>这个配置将监视Nginx的访问日志，并在60秒内发现10次匹配的行为时，将IP地址添加到iptables的HTTP链中，禁止其访问10分钟。</p>
+<ol start="3">
+<li>保存你的更改并重启Fail2ban服务以应用新的配置：</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl restart fail2ban</span><br></pre></td></tr></table></figure>
+
+<p>请注意，你可能需要根据你的系统和Nginx配置进行一些调整。例如，你可能需要更改<code>logpath</code>以匹配你的Nginx访问日志的实际位置。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://example.com/2023/07/14/Why-HTTPS/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -966,7 +1402,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">6</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -977,7 +1413,7 @@
             
             <div class="site-state-item site-state-categories">
               
-                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-count">5</span>
                 <span class="site-state-item-name">categories</span>
               
             </div>
@@ -988,7 +1424,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">5</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>
