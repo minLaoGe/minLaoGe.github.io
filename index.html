@@ -260,6 +260,157 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/07/18/redis%E9%A2%91%E7%B9%81%E6%96%AD%E5%BC%80%E8%BF%9E%E6%8E%A5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Justin Min">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/SAO.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Justin's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2023/07/18/redis%E9%A2%91%E7%B9%81%E6%96%AD%E5%BC%80%E8%BF%9E%E6%8E%A5/" itemprop="url">本地环境redis或者jedis频繁断开连接,timeout</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2023-07-18T14:15:00+08:00">
+                2023-07-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/redis/" itemprop="url" rel="index">
+                    <span itemprop="name">redis</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="问题-Redis连接超时"><a href="#问题-Redis连接超时" class="headerlink" title="问题,Redis连接超时"></a>问题,Redis连接超时</h2><p>记录些问题，这是之前碰见的bug，但是具有参考性，百度无法搜到。故此记录。</p>
+<p>Redis 配置如下：</p>
+<p><img src="/images/pasted-52.png" alt="upload successful"></p>
+<p> redis，刚起动正常，但是不久之后，就直接报错，断开链接,报错如下。有时甚至无法启动。一开始以为是mac的兼容的问题，导致redis启动存在问题，但是在redis的仓库github上没有相关的关于redis兼容的issue推测是其他原因导致的，报错内容如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">Caused by: org.springframework.data.redis.RedisConnectionFailureException: Cannot get Jedis connection</span><br><span class="line">	at org.springframework.data.redis.connection.jedis.JedisConnectionFactory.fetchJedisConnector(JedisConnectionFactory.java:271)</span><br><span class="line">	at org.springframework.data.redis.connection.jedis.JedisConnectionFactory.getConnection(JedisConnectionFactory.java:454)</span><br><span class="line">	at org.springframework.data.redis.core.RedisConnectionUtils.fetchConnection(RedisConnectionUtils.java:193)</span><br><span class="line">	at org.springframework.data.redis.core.RedisConnectionUtils.doGetConnection(RedisConnectionUtils.java:144)</span><br><span class="line">	at org.springframework.data.redis.core.RedisConnectionUtils.getConnection(RedisConnectionUtils.java:105)</span><br><span class="line">	at org.springframework.data.redis.core.RedisTemplate.execute(RedisTemplate.java:393)</span><br><span class="line">	at org.springframework.data.redis.core.RedisTemplate.execute(RedisTemplate.java:373)</span><br><span class="line">	at org.springframework.data.redis.core.RedisTemplate.doWithKeys(RedisTemplate.java:785)</span><br><span class="line">	at org.springframework.data.redis.core.RedisTemplate.delete(RedisTemplate.java:588)</span><br><span class="line">	at cn.minfengyu.utils.RedisUtil.delete(RedisUtil.java:68)</span><br><span class="line">	at cn.minfengyu.system.config.AppStartupRunner.putRight(AppStartupRunner.java:38)</span><br><span class="line">	at cn.minfengyu.system.config.AppStartupRunner.run(AppStartupRunner.java:27)</span><br><span class="line">	at org.springframework.boot.SpringApplication.callRunner(SpringApplication.java:760)</span><br><span class="line">	... 5 common frames omitted</span><br><span class="line">Caused by: redis.clients.jedis.exceptions.JedisConnectionException: java.net.SocketTimeoutException: Read timed out</span><br><span class="line">	at redis.clients.jedis.util.RedisInputStream.ensureFill(RedisInputStream.java:208)</span><br><span class="line">	at redis.clients.jedis.util.RedisInputStream.readByte(RedisInputStream.java:46)</span><br><span class="line">	at redis.clients.jedis.Protocol.process(Protocol.java:126)</span><br><span class="line">	at redis.clients.jedis.Protocol.read(Protocol.java:192)</span><br><span class="line">	at redis.clients.jedis.Connection.readProtocolWithCheckingBroken(Connection.java:316)</span><br><span class="line">	at redis.clients.jedis.Connection.getStatusCodeReply(Connection.java:243)</span><br><span class="line">	at redis.clients.jedis.Connection.auth(Connection.java:372)</span><br><span class="line">	at redis.clients.jedis.Connection.initializeFromClientConfig(Connection.java:345)</span><br><span class="line">	at redis.clients.jedis.Connection.&lt;init&gt;(Connection.java:53)</span><br><span class="line">	at redis.clients.jedis.Jedis.&lt;init&gt;(Jedis.java:214)</span><br><span class="line">	at redis.clients.jedis.JedisFactory.makeObject(JedisFactory.java:181)</span><br><span class="line">	at org.apache.commons.pool2.impl.GenericObjectPool.create(GenericObjectPool.java:571)</span><br><span class="line">	at org.apache.commons.pool2.impl.GenericObjectPool.borrowObject(GenericObjectPool.java:298)</span><br><span class="line">	at org.apache.commons.pool2.impl.GenericObjectPool.borrowObject(GenericObjectPool.java:223)</span><br><span class="line">	at redis.clients.jedis.util.Pool.getResource(Pool.java:34)</span><br><span class="line">	at redis.clients.jedis.JedisPool.getResource(JedisPool.java:373)</span><br><span class="line">	at redis.clients.jedis.JedisPool.getResource(JedisPool.java:17)</span><br><span class="line">	at org.springframework.data.redis.connection.jedis.JedisConnectionFactory.fetchJedisConnector(JedisConnectionFactory.java:262)</span><br><span class="line">	... 17 common frames omitted</span><br><span class="line">Caused by: java.net.SocketTimeoutException: Read timed out</span><br><span class="line">	at java.base&#x2F;sun.nio.ch.NioSocketImpl.timedRead(NioSocketImpl.java:283)</span><br><span class="line">	at java.base&#x2F;sun.nio.ch.NioSocketImpl.implRead(NioSocketImpl.java:309)</span><br><span class="line">	at java.base&#x2F;sun.nio.ch.NioSocketImpl.read(NioSocketImpl.java:350)</span><br><span class="line">	at java.base&#x2F;sun.nio.ch.NioSocketImpl$1.read(NioSocketImpl.java:803)</span><br><span class="line">	at java.base&#x2F;java.net.Socket$SocketInputStream.read(Socket.java:966)</span><br><span class="line">	at java.base&#x2F;java.io.InputStream.read(InputStream.java:218)</span><br><span class="line">	at redis.clients.jedis.util.RedisInputStream.ensureFill(RedisInputStream.java:202)</span><br><span class="line">	... 34 common frames omitted</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法:"></a>解决办法:</h2><p>查了许久，发现是Redis连接用的是localhost域名，使用的是域名解析，而我开起了clash For windows客户端，导致域名解析匹配规则交给远端DNS服务器去解析了,远端DNS无法解析localhost域名导致连接失败的：</p>
+<p><img src="/images/pasted-54.png" alt="upload successful">);</p>
+<h3 id="1-修改localhost-x3D-》-127-0-0-1"><a href="#1-修改localhost-x3D-》-127-0-0-1" class="headerlink" title="1. 修改localhost&#x3D;》 127.0.0.1"></a>1. 修改localhost&#x3D;》 127.0.0.1</h3><p><img src="/images/pasted-55.png" alt="upload successful"></p>
+<h3 id="2-关闭Clash-for-windows-客户端"><a href="#2-关闭Clash-for-windows-客户端" class="headerlink" title="2. 关闭Clash for windows 客户端"></a>2. 关闭Clash for windows 客户端</h3><h3 id="3-添加clash规则直接将localhost解析为127-0-01"><a href="#3-添加clash规则直接将localhost解析为127-0-01" class="headerlink" title="3. 添加clash规则直接将localhost解析为127.0.01."></a>3. 添加clash规则直接将localhost解析为127.0.01.</h3>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://example.com/2023/07/17/fail2ban/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1402,7 +1553,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-count">7</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -1413,7 +1564,7 @@
             
             <div class="site-state-item site-state-categories">
               
-                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-count">6</span>
                 <span class="site-state-item-name">categories</span>
               
             </div>
@@ -1424,7 +1575,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-count">6</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>
