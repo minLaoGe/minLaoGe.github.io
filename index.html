@@ -411,6 +411,169 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/07/18/%E5%A6%82%E4%BD%95%E5%88%86%E6%9E%90mac%E5%B4%A9%E6%BA%83%E6%97%A5%E5%BF%97/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Justin Min">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/SAO.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Justin's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2023/07/18/%E5%A6%82%E4%BD%95%E5%88%86%E6%9E%90mac%E5%B4%A9%E6%BA%83%E6%97%A5%E5%BF%97/" itemprop="url">如何分析mac崩溃日志</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2023-07-18T01:22:00+08:00">
+                2023-07-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/MAC/" itemprop="url" rel="index">
+                    <span itemprop="name">MAC</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Q1-M1-MAC又死机了什么鬼"><a href="#Q1-M1-MAC又死机了什么鬼" class="headerlink" title="Q1: M1 MAC又死机了什么鬼"></a>Q1: M1 MAC又死机了什么鬼</h2><p>众所周知周知，盗版软件是会导致mac死机的原因之一，尤其是M系列的芯片，本人在开始这便文章之前，希望各位小伙伴引我为鉴，远离盗版，拥抱正版软件。</p>
+<p>由于各个盗版软件没有及时更新，导致系统总是因为盗版软件的原因陷入死机状态，那么如何排查出是哪个盗版软件导致系统陷入死机的呢？</p>
+<p>具体情况： 系统死机(一开始是非常卡顿，如果不重启，过了大概几十分钟就死机)，但是内存压力和CPU压力并不高，具体的图片如下,鼠标一直在转圈圈，无论点哪里都在转圈圈，但是鼠标可以移动：</p>
+<p><img src="/images/pasted-56.png" alt="upload successful"></p>
+<p>mac压力情况：</p>
+<p><img src="/images/pasted-57.png" alt="upload successful"></p>
+<p><img src="/images/pasted-59.png" alt="upload successful"></p>
+<h2 id="排查步骤"><a href="#排查步骤" class="headerlink" title="排查步骤"></a>排查步骤</h2><p>ps: 崩溃系统是 M1  系统是 Ventura 13.4.1</p>
+<ol>
+<li><p><a href="https://support.apple.com/zh-cn/guide/console/cnsl1012/1.1/mac/13.0" target="_blank" rel="noopener">官网关于系统日志的说明</a>；<br>百度之后根据官网的步骤查看日志，发现并没有啥用，完全看不出来。 </p>
+</li>
+<li><p>进入 &#x2F;var&#x2F;log&#x2F;DiagnosticMessages  目录,找到你死机那个点的日期日志我的是07-18:</p>
+</li>
+</ol>
+<p><img src="/images/pasted-61.png" alt="upload successful"></p>
+<p>左键双击这个日志，找到出错的时间点，在周围查最近一条的卡顿日志，大致的卡顿日志，主要如下:</p>
+<p><img src="/images/pasted-43.png" alt="upload successful"></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">com.apple.message.domain: com.apple.crashreporter.writereport.hang #注意关注   </span><br><span class="line">com.apple.message.signature: RAR Extractor - Unarchiver Pro</span><br><span class="line">com.apple.message.signature2: com.ABabe.rarextractorstar ||| 6.3.7 (31) ((null))</span><br><span class="line">com.apple.message.signature3: hang</span><br><span class="line">com.apple.message.result: noop</span><br><span class="line">com.apple.message.summarize: YES</span><br><span class="line">SenderMachUUID: 83644D4E-7B94-31B8-BAE7-D19E2BE52233</span><br></pre></td></tr></table></figure>
+<h3 id="com-apple-crashreporter-writereport-hang"><a href="#com-apple-crashreporter-writereport-hang" class="headerlink" title="com.apple.crashreporter.writereport.hang"></a>com.apple.crashreporter.writereport.hang</h3><p>“RAR Extractor - Unarchiver Pro”这个应用在运行过程中出现了挂起（hang）的问题。”Hang”通常指的是应用程序在运行过程中停止响应，通常是由于程序中的一些错误或系统资源的问题导致的。</p>
+<p>我们可以发现从这里开始，再往下看日志，基本都是com.apple.crashreporter.writereport.hang 的日志，所以可以大概得出结论，这个盗版的软件就是导致系统崩溃的罪魁祸首，正版的就不会有这个问题了。</p>
+<p><img src="/images/pasted-62.png" alt="upload successful"></p>
+<p>接下来直接强制重启把这个软件卸载就可以了。</p>
+<h2 id="A1：-拒绝盗版，拥抱正版"><a href="#A1：-拒绝盗版，拥抱正版" class="headerlink" title="A1： 拒绝盗版，拥抱正版"></a>A1： 拒绝盗版，拥抱正版</h2>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://example.com/2023/07/17/fail2ban/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1553,7 +1716,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-count">8</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -1564,7 +1727,7 @@
             
             <div class="site-state-item site-state-categories">
               
-                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-count">7</span>
                 <span class="site-state-item-name">categories</span>
               
             </div>
@@ -1575,7 +1738,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-count">9</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>
