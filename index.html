@@ -260,6 +260,177 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/08/09/Java%E4%BB%A3%E7%A0%81%E5%A6%82%E4%BD%95%E5%AF%B9%E6%8E%A5%E6%B5%81%E4%BA%91GPT/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Justin Min">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/SAO.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Justin's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2023/08/09/Java%E4%BB%A3%E7%A0%81%E5%A6%82%E4%BD%95%E5%AF%B9%E6%8E%A5%E6%B5%81%E4%BA%91GPT/" itemprop="url">Java代码如何对接流云GPT代理</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2023-08-09T22:32:00+08:00">
+                2023-08-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/AD/" itemprop="url" rel="index">
+                    <span itemprop="name">AD</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="对接流云GPT代理"><a href="#对接流云GPT代理" class="headerlink" title="对接流云GPT代理"></a>对接流云GPT代理</h1><p>如何对接流云代理平台呢？ <a href="https://liuyuncopilot.com/" target="_blank" rel="noopener">https://liuyuncopilot.com/</a></p>
+<h2 id="使用教程"><a href="#使用教程" class="headerlink" title="使用教程"></a>使用教程</h2><h3 id="1-先导入jar包"><a href="#1-先导入jar包" class="headerlink" title="1. 先导入jar包"></a>1. 先导入jar包</h3><p>先导入jar包， jar包地址： 蓝奏云 <a href="https://wwva.lanzouq.com/iz5pj14t3qla" target="_blank" rel="noopener">https://wwva.lanzouq.com/iz5pj14t3qla</a></p>
+<h3 id="2-先上测试代码"><a href="#2-先上测试代码" class="headerlink" title="2. 先上测试代码"></a>2. 先上测试代码</h3><p><img src="/images/pasted-69.png" alt="upload successful"></p>
+<p>下面是Test代码。 </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">package</span> cn.minfengyu;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.plexpt.chatgpt.ChatGPT;</span><br><span class="line"><span class="keyword">import</span> com.plexpt.chatgpt.ChatGPTStream;</span><br><span class="line"><span class="keyword">import</span> com.plexpt.chatgpt.entity.chat.ChatCompletion;</span><br><span class="line"><span class="keyword">import</span> com.plexpt.chatgpt.entity.chat.Message;</span><br><span class="line"><span class="keyword">import</span> com.plexpt.chatgpt.listener.ConsoleStreamListener;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.Arrays;</span><br><span class="line"><span class="keyword">import</span> java.util.concurrent.CountDownLatch;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test2</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        steream();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">steream</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        ConsoleStreamListener listener = <span class="keyword">new</span> ConsoleStreamListener();</span><br><span class="line"></span><br><span class="line">        <span class="comment">//指定角色</span></span><br><span class="line">        Message systemMessage = Message.of(<span class="string">"你是一个大诗人，超级会写诗歌"</span>);</span><br><span class="line">        <span class="comment">//指定消息</span></span><br><span class="line">        Message message = Message.of(<span class="string">"写一篇文章，不少于7000字,题目是：火锅！"</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//1. 构建消息模块</span></span><br><span class="line">        ChatCompletion chatCompletion = ChatCompletion.builder()</span><br><span class="line">                <span class="comment">//插入消息</span></span><br><span class="line">                .messages(Arrays.asList(systemMessage,message))</span><br><span class="line">                <span class="comment">//选择你需要聊天的模型</span></span><br><span class="line">                .model(ChatCompletion.Model.GPT_4.getName())</span><br><span class="line">                .build();</span><br><span class="line"></span><br><span class="line">        <span class="comment">//2. 创建请求模块.</span></span><br><span class="line">        ChatGPTStream chatGPTStream=ChatGPTStream.builder()</span><br><span class="line">                <span class="comment">//请求的超时时间:</span></span><br><span class="line">                .timeout(<span class="number">600</span>)</span><br><span class="line">                <span class="comment">//你的userID</span></span><br><span class="line">                .userId(<span class="string">"sdf"</span>)</span><br><span class="line">                <span class="comment">//你的 token</span></span><br><span class="line">                .token(<span class="string">"sdf"</span>)</span><br><span class="line">                .build()</span><br><span class="line">                .init();</span><br><span class="line"></span><br><span class="line">        <span class="comment">//如果你不需要流式输出，可以直接在这里接受到所有的消息</span></span><br><span class="line">        listener.setOnComplate((s)-&gt;&#123;</span><br><span class="line">            System.out.println(<span class="string">"消息完成之后会输出"</span>+s);</span><br><span class="line">        &#125;);</span><br><span class="line">        <span class="comment">//如果你需要流式输出，可以直接在这接收到每一次流式输出的消息。不需要的话，可以直接注释掉。</span></span><br><span class="line">        listener.setOnMessage((sdf)-&gt;&#123;</span><br><span class="line">            System.out.println(<span class="string">"收到消息时候会输出: "</span>+sdf);</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="comment">//3. 开始调用接口</span></span><br><span class="line">        chatGPTStream.streamChatCompletion(chatCompletion, listener);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//卡住测试</span></span><br><span class="line">        CountDownLatch countDownLatch = <span class="keyword">new</span> CountDownLatch(<span class="number">1</span>);</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            countDownLatch.await();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="3-效果图"><a href="#3-效果图" class="headerlink" title="3. 效果图"></a>3. 效果图</h3><p><img src="/images/pasted-71.png" alt="upload successful"></p>
+<p><img src="/images/pasted-70.png" alt="upload successful"></p>
+<h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h2><h3 id="IDEA项目如何引入外部jar包"><a href="#IDEA项目如何引入外部jar包" class="headerlink" title="IDEA项目如何引入外部jar包"></a>IDEA项目如何引入外部jar包</h3><ol>
+<li><p>先在resouces 目录下新建一个lib目录</p>
+</li>
+<li><p>将jar包复制进去</p>
+</li>
+<li><p>右击jar包点击Add As Librare</p>
+</li>
+</ol>
+<p><img src="/images/pasted-73.png" alt="upload successful"></p>
+<ol start="4">
+<li>点击ok即可，出来下拉框即说明导入成功</li>
+</ol>
+<p><img src="/images/pasted-74.png" alt="upload successful"></p>
+<p><img src="/images/pasted-75.png" alt="upload successful"></p>
+<h3 id="maven项目如何打包外部jar包"><a href="#maven项目如何打包外部jar包" class="headerlink" title="maven项目如何打包外部jar包"></a>maven项目如何打包外部jar包</h3><p>除了 systemPath 保持一致，其他的全部乱填都可以</p>
+<p><img src="/images/pasted-72.png" alt="upload successful"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;cn.wechat&lt;&#x2F;groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;alipay-sdk&lt;&#x2F;artifactId&gt;</span><br><span class="line">    &lt;version&gt;20170829142630&lt;&#x2F;version&gt;</span><br><span class="line">    &lt;scope&gt;system&lt;&#x2F;scope&gt;</span><br><span class="line">    &lt;systemPath&gt;$&#123;project.basedir&#125;&#x2F;src&#x2F;main&#x2F;resources&#x2F;lib&#x2F;chatgpt.jar&lt;&#x2F;systemPath&gt;</span><br><span class="line">&lt;&#x2F;dependency&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://example.com/2023/07/18/redis%E9%A2%91%E7%B9%81%E6%96%AD%E5%BC%80%E8%BF%9E%E6%8E%A5/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1716,7 +1887,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-count">9</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -1727,7 +1898,7 @@
             
             <div class="site-state-item site-state-categories">
               
-                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-count">8</span>
                 <span class="site-state-item-name">categories</span>
               
             </div>
@@ -1738,7 +1909,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-count">10</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>
